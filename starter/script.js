@@ -1,3 +1,18 @@
+// Get references to the #generate element
+var generateBtn = document.querySelector('#generate');
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector('#password');
+
+  passwordText.value = password;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
+
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -88,37 +103,36 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-var passwordLength = " ";
-var specialCharacters;
-var upperCasedCharacters;
-var lowerCasedCharacters;
-var numericCharacters;
+var confirmPasswordLength = " ";
+var confirmSpecialCharacters;
+var confirmUpperCasedCharacters;
+var confirmLowerCasedCharacters;
+var confirmNumericCharacters;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-var passwordLength = (prompt("How many characters would you like your password to contain?"));
+var confirmPasswordLength = (prompt("How many characters would you like your password to contain?"));
  
-for(passwordLength <=9 || passwordLength >= 65) {
+while(confirmPasswordLength <=9 || confirmPasswordLength >= 65) {
   alert("Try Again! Password length must be between 10-64.");
-  var passwordLength = (prompt("How many characters would you like your password to contain?"));
+  var confirmPasswordLength = (prompt("How many characters would you like your password to contain?"));
 }
 }
-alert("Your password will have" + passwordLength + "characters")
 
 // Function for getting a random element from an array
 function getRandom(arr) {
   
- var specialCharacters = confirm("Click OK to confirm you would like to include special characters");
- var upperCasedCharacters = confirm("Click OK to confirm you would like to include upper cased characters");
- var lowerCasedCharacters =confirm("Click OK to confirm you would like to include lower cased characters");
- var numericCharacters = confirm("Click OK to confirm you would like to include numeric characters");
+ var confirmSpecialCharacters = confirm("Click OK to confirm you would like to include special characters");
+ var confirmUpperCasedCharacters = confirm("Click OK to confirm you would like to include upper cased characters");
+ var confirmLowerCasedCharacters =confirm("Click OK to confirm you would like to include lower cased characters");
+ var confirmNumericCharacters = confirm("Click OK to confirm you would like to include numeric characters");
 
- for(specialCharacters === false && upperCasedCharacters === false && lowerCasedCharacters === false && numericCharacters === false) {
+ while(specialCharacters === false && upperCasedCharacters === false && lowerCasedCharacters === false && numericCharacters === false) {
   alert("You must have atleast one character type!");
- var specialCharacters = confirm("Click OK to confirm you would like to include special characters");
- var upperCasedCharacters = confirm("Click OK to confirm you would like to include upper cased characters");
- var lowerCasedCharacters =confirm("Click OK to confirm you would like to include lower cased characters");
- var numericCharacters = confirm("Click OK to confirm you would like to include numeric characters");
+ var confirmSpecialCharacters = confirm("Click OK to confirm you would like to include special characters");
+ var confirmUpperCasedCharacters = confirm("Click OK to confirm you would like to include upper cased characters");
+ var confirmLowerCasedCharacters =confirm("Click OK to confirm you would like to include lower cased characters");
+ var confirmNumericCharacters = confirm("Click OK to confirm you would like to include numeric characters");
  }
 
 }
@@ -127,39 +141,27 @@ function getRandom(arr) {
 function generatePassword() {
   var passwordCharacters = []
 
-  if (specialCharacters) {
-    passwordCharacters = passwordCharacters.concat(specialCharacter)
+  if (confirmSpecialCharacters) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters)
   }
-  if (upperCasedCharacters) {
-    passwordCharacters = passwordCharacters.concat(uppercaseCharacter)
+  if (confirmUpperCasedCharacters) {
+    passwordCharacters = passwordCharacters.concat(upperCasedCharacters)
   }
-  if (lowerCasedCharacters) {
-    passwordCharacters = passwordCharacters.concat(lowercaseCharacter)
+  if (confirmLowerCasedCharacters) {
+    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters)
   }
-  if (numericCharacters) {
-    passwordCharacters = passwordCharacters.concat(numericCharacter)
+  if (confirmNumericCharacters) {
+    passwordCharacters = passwordCharacters.concat(numericCharacters)
   }
- console.log(passwordCharacters)
+ console.log[passwordCharacters]
 
  var randomPassword = " "
  
- for( var i = 0; i < passwordLength; i++) {
+ for( var i = 0; i < confirmPasswordLength; i++) {
   randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-  console.log(passwordCharacters)
+  console.log(randomPassword)
  }
  return randomPassword;
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
